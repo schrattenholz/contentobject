@@ -1,0 +1,3 @@
+Schrattenholz\TemplateConfig\TemplateConfigAdmin:
+  extensions:
+    - Schrattenholz\ContentObject\CO_TemplateConfigExtension

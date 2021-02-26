@@ -1,0 +1,71 @@
+<?php
+namespace Schrattenholz\ContentObject;
+
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TabSet;
+use SilverStripe\Security\Permission;
+use Silverstripe\Assets\Image;
+use Silverstripe\Assets\File;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Versioned\Versioned;
+class CO_TeaserSection_Box extends DataObject{
+	private static $table_name="co_teasersection_box";
+	private static $db=array(
+		'Title'=>'Text',
+		'SortID'=>'Int',
+		'ReadMore'=>'Varchar(100)'
+		
+	);
+    private static $translate = [
+        'Title',
+		'ReadMore'
+    ];
+	private static $defaults = array('ReadMore' => "Mehr lesen...");
+	private static $has_one=array(
+		'CO_TeaserSection'=>CO_TeaserSection::class,
+		'DeepLink'=>SiteTree::class,
+		'Image'=>Image::class,
+		'Video'=>File::class
+	);
+	private static $extensions = [
+        Versioned::class,
+    ];
+	public function getCMSFields(){
+		$fields=parent::getCMSFields();
+		$fields->addFieldToTab('Root.Main',new TextField("Title","Bezeichnung"));
+		$fields->addFieldToTab('Root.Main',new TextField('ReadMore','Beschriftung'));
+		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
+		$fields->addFieldToTab('Root.Main',new UploadField('Video','Video (Bild wird das Startbild des Video)'));
+		$fields->removeFieldFromTab('Root.Main','CO_TeaserSectionID');
+		$fields->removeFieldFromTab('Root.Main','SortID');
+		return $fields;
+	}
+	public function CoverImage(){
+		if($this->ImageID==0 && $this->DeepLink()){
+			return $this->DeepLink()->CoverImage();
+		}else{
+			return $this->Image();
+		}
+	}
+
+	public function onBeforeWrite(){
+		if(!$this->Title && $this->DeepLink()){
+			$this->Title=$this->DeepLink()->Title;
+		}
+		
+		
+		parent::onBeforeWrite();
+	}
+	private static $owns=[
+		'Image',
+	];
+	public function renderIt(){
+		return $this->renderWith($this->ClassName);	
+	}
+		public function MenuTitle(){			return $this->Title;		}
+		
+
+}

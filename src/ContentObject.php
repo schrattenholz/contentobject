@@ -22,7 +22,7 @@ use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Security\Permission;
 use SilverStripe\Versioned\Versioned;
 use Schrattenholz\TemplateConfig\ColorSet;
-
+use SilverStripe\CMS\Model\SiteTree;
 class ContentObject extends DataObject{
 	private static $table_name="contentobject";
 	private static $db=array(
@@ -39,7 +39,7 @@ class ContentObject extends DataObject{
         Versioned::class,
     ];
 	private static $has_one=array(
-		'Page'=>Page::class,
+		'Page'=>SiteTree::class,
 		'ColorSet'=>ColorSet::class,
 		'SeveralCols'=>SeveralCols::class
 	);

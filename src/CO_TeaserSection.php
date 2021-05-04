@@ -148,7 +148,7 @@ class CO_TeaserSection extends ContentObject{
 		return $list;
 	}
 		public function renderLayout(){
-						return $this->getOwner()->renderWith(ThemeResourceLoader::inst()->findTemplate(
+			return $this->getOwner()->renderWith(ThemeResourceLoader::inst()->findTemplate(
 				$this->Layout()->Src,
 				SSViewer::config()->uninherited('themes')
 			));

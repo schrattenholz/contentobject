@@ -1,3 +1,6 @@
 Schrattenholz\TemplateConfig\TemplateConfigAdmin:
   extensions:
     - Schrattenholz\ContentObject\CO_TemplateConfigExtension
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    - Schrattenholz\ContentObject\ContentObjectExtension

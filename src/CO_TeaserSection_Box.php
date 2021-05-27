@@ -11,6 +11,8 @@ use Silverstripe\Assets\File;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Versioned\Versioned;
+use Schrattenholz\TemplateConfig\ColorSet;
+use SilverStripe\Forms\DropdownField;
 class CO_TeaserSection_Box extends DataObject{
 	private static $table_name="co_teasersection_box";
 	private static $db=array(
@@ -28,7 +30,8 @@ class CO_TeaserSection_Box extends DataObject{
 		'CO_TeaserSection'=>CO_TeaserSection::class,
 		'DeepLink'=>SiteTree::class,
 		'Image'=>Image::class,
-		'Video'=>File::class
+		'Video'=>File::class,
+		'ColorSet'=>ColorSet::class
 	);
 	private static $extensions = [
         Versioned::class,
@@ -37,6 +40,9 @@ class CO_TeaserSection_Box extends DataObject{
 		$fields=parent::getCMSFields();
 		$fields->addFieldToTab('Root.Main',new TextField("Title","Bezeichnung"));
 		$fields->addFieldToTab('Root.Main',new TextField('ReadMore','Beschriftung'));
+		if(ColorSet::get()){
+			$fields->addFieldToTab('Root.Main',new DropdownField('ColorSetID','Farbschema wählen',ColorSet::get()->map("ID", "Title", "Bitte auswählen")));
+		}
 		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
 		$fields->addFieldToTab('Root.Main',new UploadField('Video','Video (Bild wird das Startbild des Video)'));
 		$fields->removeFieldFromTab('Root.Main','CO_TeaserSectionID');
@@ -55,13 +61,14 @@ class CO_TeaserSection_Box extends DataObject{
 		if(!$this->Title && $this->DeepLink()){
 			$this->Title=$this->DeepLink()->Title;
 		}
-		
-		
 		parent::onBeforeWrite();
 	}
 	private static $owns=[
 		'Image',
 	];
+	public function Content(){
+		return false;
+	}
 	public function renderIt(){
 		return $this->renderWith($this->ClassName);	
 	}

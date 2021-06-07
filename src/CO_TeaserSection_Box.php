@@ -13,6 +13,8 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Versioned\Versioned;
 use Schrattenholz\TemplateConfig\ColorSet;
 use SilverStripe\Forms\DropdownField;
+use SilverStripe\Core\Injector\Injector;
+use Psr\Log\LoggerInterface;
 class CO_TeaserSection_Box extends DataObject{
 	private static $table_name="co_teasersection_box";
 	private static $db=array(
@@ -49,8 +51,10 @@ class CO_TeaserSection_Box extends DataObject{
 		$fields->removeFieldFromTab('Root.Main','SortID');
 		return $fields;
 	}
+
 	public function CoverImage(){
 		if($this->ImageID==0 && $this->DeepLink()){
+					Injector::inst()->get(LoggerInterface::class)->error('TeaserSection_Box.php Hole CoverImage aus DeepLink');
 			return $this->DeepLink()->CoverImage();
 		}else{
 			return $this->Image();

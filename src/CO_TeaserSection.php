@@ -31,7 +31,7 @@ use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
 use SilverStripe\View\ThemeResourceLoader;
 use SilverStripe\View\SSViewer;
-
+use SilverStripe\Forms\TreeMultiselectField;
 class CO_TeaserSection extends ContentObject{
 	private static $table_name="co_teasersection";
 	private static $db=array(
@@ -57,6 +57,9 @@ class CO_TeaserSection extends ContentObject{
 	);
 	private static $has_many=array(
 		'CO_TeaserSection_Boxes'=>CO_TeaserSection_Box::class
+	);
+	private static $many_many=array(
+		'Pages'=>SiteTree::class
 	);
 	private static $singular_name ="Teaser Element";
 	private static $plural_name = "CO_TeaserSection Boxen"; 
@@ -91,9 +94,9 @@ class CO_TeaserSection extends ContentObject{
 		$fields->addFieldToTab('Root.Main',new TextField('SubHead','SubHead'));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('Limit','Anzahl anzuzeigende Beiträge'));
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt oberhalb der Teaserboxen'));
-		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Datenquelle',SiteTree::class));
+		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Teaser-Kategorie',SiteTree::class));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new CheckboxField('UseAutoData','Automatisierte Daten einbinden?'),"Limit");
-		
+		$fields->addFieldToTab('Root.Automatisierte Daten', new TreeMultiselectField('Pages','Einzelne Seiten, die auch angezeigt werden sollen',SiteTree::class));
 
 		/* Wenn Layoutauswahl möglich
 		
@@ -132,7 +135,13 @@ class CO_TeaserSection extends ContentObject{
 			$sortID=$c->SortID;
 		}
 		if($this->UseAutoData){
-			foreach($this->Category()->AllChildren()->sort("Created","ASC")->limit($this->Limit) as $c){
+			if($this->CategoryID){
+				foreach($this->Category()->AllChildren()->sort("Created","ASC")->limit($this->Limit) as $c){
+					$c->SortID=$sortID+1;
+					$list->push($c);
+				}
+			}
+			foreach($this->Pages()->sort("Created","ASC") as $c){
 				$c->SortID=$sortID+1;
 				$list->push($c);
 			}

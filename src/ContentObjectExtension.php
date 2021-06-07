@@ -38,7 +38,13 @@ class ContentObjectExtension extends Extension{
 		'ContentObjects'=>ContentObject::class,
 		'SeveralCols'=>SeveralCols::class
 	);
+	private static $belongs_many_many=array(
+		'CO_TeaserSections'=>CO_TeaserSection::class
+	);
 	public function updateCMSFields(FieldList $fields) {
+		
+		
+		
 		$gridFieldConfig=GridFieldConfig::create()
 			->addComponent(new GridFieldButtonRow('before'))
 			->addComponent(new GridFieldDataColumns)

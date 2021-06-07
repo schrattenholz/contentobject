@@ -49,7 +49,6 @@ class CO_TeaserSection_Box extends DataObject{
 		$fields->removeFieldFromTab('Root.Main','SortID');
 		return $fields;
 	}
-	/*
 	public function CoverImage(){
 		if($this->ImageID==0 && $this->DeepLink()){
 			return $this->DeepLink()->CoverImage();
@@ -57,7 +56,6 @@ class CO_TeaserSection_Box extends DataObject{
 			return $this->Image();
 		}
 	}
-	*/
 
 	public function onBeforeWrite(){
 		if(!$this->Title && $this->DeepLink()){

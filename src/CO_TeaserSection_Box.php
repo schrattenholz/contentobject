@@ -54,7 +54,6 @@ class CO_TeaserSection_Box extends DataObject{
 
 	public function CoverImage(){
 		if($this->ImageID==0 && $this->DeepLink()){
-					Injector::inst()->get(LoggerInterface::class)->error('TeaserSection_Box.php Hole CoverImage aus DeepLink');
 			return $this->DeepLink()->CoverImage();
 		}else{
 			return $this->Image();

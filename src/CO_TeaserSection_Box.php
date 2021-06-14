@@ -35,9 +35,6 @@ class CO_TeaserSection_Box extends DataObject{
 		'Video'=>File::class,
 		'ColorSet'=>ColorSet::class
 	);
-	private static $extensions = [
-        Versioned::class,
-    ];
 	public function getCMSFields(){
 		$fields=parent::getCMSFields();
 		$fields->addFieldToTab('Root.Main',new TextField("Title","Bezeichnung"));
@@ -52,9 +49,9 @@ class CO_TeaserSection_Box extends DataObject{
 		return $fields;
 	}
 
-	public function CoverImage(){
+	public function DefaultImage(){
 		if($this->ImageID==0 && $this->DeepLink()){
-			return $this->DeepLink()->CoverImage();
+			return $this->DeepLink()->DefaultImage();
 		}else{
 			return $this->Image();
 		}

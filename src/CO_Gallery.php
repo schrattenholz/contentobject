@@ -34,7 +34,7 @@ use SilverStripe\ORM\ValidationException;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\View\ThemeResourceLoader;
 use SilverStripe\View\SSViewer;
-
+use Colymba\BulkUpload\BulkUploader;
 use SilverStripe\Core\Injector\Injector;
 use Psr\Log\LoggerInterface;
 class CO_Gallery extends ContentObject{

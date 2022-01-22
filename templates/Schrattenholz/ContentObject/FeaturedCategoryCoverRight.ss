@@ -16,8 +16,7 @@
           <div class="cz-carousel">
             <div class="cz-carousel-inner" data-carousel-options="{&quot;nav&quot;: false, &quot;controlsContainer&quot;: &quot;#hoodie-day&quot;}">
               <% include Schrattenholz\ContentObject\FeaturedCategoryItems %>
-              
-            </div>
+             </div>
           </div>
         </div>
 		        <!-- Banner with controls-->
@@ -31,7 +30,7 @@
                 <button type="button"><i class="czi-arrow-left"></i></button>
                 <button type="button"><i class="czi-arrow-right"></i></button>
               </div>
-            </div><a class="d-none d-md-block " href="$Category.Link" ><img class="d-block w-100" src="$Category.CoverImage.Fill(500,350).URL" alt="$Category.Title"></a>
+            </div><a class="d-none d-md-block " href="$Category.Link" ><img class="d-block w-100" src="$Category.DefaultImage.Fill(500,350).URL" alt="$Category.Title"></a>
           </div>
         </div>
       </div>

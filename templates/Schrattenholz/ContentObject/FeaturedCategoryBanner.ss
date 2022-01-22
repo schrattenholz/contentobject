@@ -14,6 +14,6 @@
                 <button type="button"><i class="czi-arrow-left"></i></button>
                 <button type="button"><i class="czi-arrow-right"></i></button>
               </div>
-            </div><a class="d-none d-md-block " href="$Category.Link" ><img class="d-block w-100" src="$Category.CoverImage.Fill(500,500).URL" alt="$Category.Title"></a>
+            </div><a class="d-none d-md-block " href="$Category.Link" ><img class="d-block w-100" src="$Category.DefaultImage.Fill(500,500).URL" alt="$Category.Title"></a>
           </div>
         </div> 

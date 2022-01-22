@@ -6,7 +6,7 @@
                     <div class="card product-card card-static">
                       <!--<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button>
 					  -->
-					  <a class="card-img-top d-block overflow-hidden" href="<% if $DeepLink %>$DeepLink.Link<% else %> $Link <% end_if %>"><img src="$CoverImage.Fill(278,278).URL" alt="Product"></a>
+					  <a class="card-img-top d-block overflow-hidden" href="<% if $DeepLink %>$DeepLink.Link<% else %> $Link <% end_if %>"><img src="$DefaultImage.Fill(278,278).URL" alt="Product"></a>
                       <div class="card-body py-2"><a class="product-meta d-block font-size-xs pb-1" href="$Parent.Link">$Parent.MenuTitle</a>
                         <h3 class="product-title font-size-sm"><a href="<% if $DeepLink %>$DeepLink.Link<% else %> $Link <% end_if %>">$Title</a></h3>
                         <div class="d-flex justify-content-between">

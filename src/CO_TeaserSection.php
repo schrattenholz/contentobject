@@ -136,7 +136,7 @@ class CO_TeaserSection extends ContentObject{
 		}
 		if($this->UseAutoData){
 			if($this->CategoryID){
-				foreach($this->Category()->AllChildren()->sort("Created","ASC")->limit($this->Limit) as $c){
+				foreach($this->Category()->AllChildren()->sort("Created","DESC")->limit($this->Limit) as $c){
 					$c->SortID=$sortID+1;
 					$list->push($c);
 				}

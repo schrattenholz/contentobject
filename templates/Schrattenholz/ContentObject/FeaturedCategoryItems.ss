@@ -1,7 +1,7 @@
 <!-- Carousel item-->
               <div> 
                 <div class="row mx-n2">
-				<% loop $LimitedEntries.Limit(3) %>
+				<% loop $LimitedEntries %>
                   <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
                     <div class="card product-card card-static">
                       <!--<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button>

@@ -64,8 +64,13 @@ class ContentObject extends DataObject{
 
 		$fields->removeByName("SeveralCols");
 		$fields->removeFieldFromTab('Root.Main','Spacer');
+		$fields->removeFieldFromTab('Root.Main','Background');
+		$fields->removeFieldFromTab('Root.Main','SeveralColsID');
+		$fields->removeFieldFromTab('Root.Main','Slot');
+		$fields->removeFieldFromTab('Root.Main','HTMLTag');
 		$fields->removeFieldFromTab('Root.Main','PageID');
 		$fields->removeFieldFromTab('Root.Main','Live');
+		$fields->removeFieldFromTab('Root.Main','ObjectWidth');
 		return $fields;
 		
 	}

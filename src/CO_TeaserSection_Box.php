@@ -56,7 +56,13 @@ class CO_TeaserSection_Box extends DataObject{
 			return $this->Image();
 		}
 	}
-
+	public function TeaserText(){
+		if(isset($this->TeaserText)){
+			return $this->TeaserText;
+		}else{
+			return $this->ReadMore;
+		}
+	}
 	public function onBeforeWrite(){
 		if(!$this->Title && $this->DeepLink()){
 			$this->Title=$this->DeepLink()->Title;

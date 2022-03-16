@@ -11,6 +11,7 @@ use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\Textfield;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\ORM\DataList;
 class CO_Gallery_Image extends DataObject{
 	private static $table_name="CO_Gallery_Image";
 	private static $db=[

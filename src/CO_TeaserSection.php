@@ -130,23 +130,29 @@ class CO_TeaserSection extends ContentObject{
 	public function LimitedEntries(){
 		$list=new ArrayList();
 		$sortID=0;
-		foreach($this->CO_TeaserSection_Boxes()->sort('SortID') as $c){
-			$list->push($c);
-			$sortID=$c->SortID;
-		}
+		
+
 		if($this->UseAutoData){
+			//alle Dokumente aus einer Kategorie holen
 			if($this->CategoryID){
 				foreach($this->Category()->AllChildren()->sort("Date","DESC")->limit($this->LimitOfEntries) as $c){
 					$c->SortID=$sortID+1;
 					$list->push($c);
 				}
 			}
+			// einzelne Seite holen
 			foreach($this->Pages()->sort("Date","DESC") as $c){
 				$c->SortID=$sortID+1;
 				$c->DeepLink=$c->Link();
 				$list->push($c);
 			}
 		}
+		//manuelle Daten hinzufuegen
+		foreach($this->CO_TeaserSection_Boxes()->sort('SortID') as $c){
+			$list->push($c);
+			$sortID=$c->SortID;
+		}
+		// manuelle Daten Ende
 		$updatedList=new ArrayList();
 		$dur=250;
 		$c=1;

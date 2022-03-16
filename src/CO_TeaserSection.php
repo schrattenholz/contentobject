@@ -143,7 +143,7 @@ class CO_TeaserSection extends ContentObject{
 			}
 			foreach($this->Pages()->sort("Date","DESC") as $c){
 				$c->SortID=$sortID+1;
-				$c->DeepLink="mur";
+				$c->DeepLink=$c->Link();
 				$list->push($c);
 			}
 		}

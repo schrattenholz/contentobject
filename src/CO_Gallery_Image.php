@@ -40,6 +40,7 @@ class CO_Gallery_Image extends DataObject{
 		//$fields->addFieldToTab('Root.Main',new Textfield('LineThree','3te Zeile'));
 		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
 		$fields->removeFieldFromTab('Root.Main','SortID');
+		$fields->removeFieldFromTab('Root.Main','GalleryID');
 		return $fields;	
 	}
 	public function onAfterWrite(){

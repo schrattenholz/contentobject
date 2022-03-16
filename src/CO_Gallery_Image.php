@@ -34,7 +34,7 @@ class CO_Gallery_Image extends DataObject{
 	public function getCMSFields(){
 		$fields=parent::getCMSFields();
 		$fields->addFieldToTab('Root.Main',new Textfield('Title','Titel'));
-		$fields->addFieldToTab("Root.Main",new TreeDropdownField("DeepLinkID","Zu verlinkende Seite","Page"));
+		$fields->addFieldToTab("Root.Main",new TreeDropdownField("DeepLink","Zu verlinkende Seite","Page"));
 		$fields->addFieldToTab('Root.Main',new TextareaField('Description','2te Zeile'));
 		$fields->addFieldToTab('Root.Main',new CheckboxField('DeepLinkHash','Ausgewähltes Dokument wird in der übergeordneten Liste angezeigt (Kreationen)'));
 		//$fields->addFieldToTab('Root.Main',new Textfield('LineThree','3te Zeile'));

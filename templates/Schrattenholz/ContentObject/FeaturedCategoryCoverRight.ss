@@ -14,7 +14,7 @@
         <!-- Product grid (carousel)-->
         <div class="col-md-7 pt-4 pt-md-0">
           <div class="cz-carousel">
-            <div class="cz-carousel-inner" data-carousel-options='{"items": $Limit, "nav": true, "responsive": {"0":{"items":1},"500":{"items":2, "gutter": 18},"768":{"items":3, "gutter": 20}, "1100":{"gutter": 24}}}'>
+            <div class="cz-carousel-inner" data-carousel-options='{"items": $LimitOfEntries, "nav": true, "responsive": {"0":{"items":1},"500":{"items":2, "gutter": 18},"768":{"items":3, "gutter": 20}, "1100":{"gutter": 24}}}'>
               <% include Schrattenholz\ContentObject\FeaturedCategoryItems %>
              </div>
           </div>

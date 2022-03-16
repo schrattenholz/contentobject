@@ -35,7 +35,7 @@ use SilverStripe\Forms\TreeMultiselectField;
 class CO_TeaserSection extends ContentObject{
 	private static $table_name="co_teasersection";
 	private static $db=array(
-		"Limit"=>"Int",
+		"LimitOfEntries"=>"Int",
 		"Content"=>'HTMLText',
 		"ReadMore"=>"Varchar(255)",
 		"UseAutoData"=>"Boolean",
@@ -92,10 +92,10 @@ class CO_TeaserSection extends ContentObject{
 		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Formatierte Überschrift anzeigen'),'Content');
 		$fields->addFieldToTab('Root.Main',new TextField('Title','Headline'));
 		$fields->addFieldToTab('Root.Main',new TextField('SubHead','SubHead'));
-		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('Limit','Anzahl anzuzeigende Beiträge'));
+		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('LimitOfEntries','Anzahl anzuzeigende Beiträge'));
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt oberhalb der Teaserboxen'));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Teaser-Kategorie',SiteTree::class));
-		$fields->addFieldToTab('Root.Automatisierte Daten',new CheckboxField('UseAutoData','Automatisierte Daten einbinden?'),"Limit");
+		$fields->addFieldToTab('Root.Automatisierte Daten',new CheckboxField('UseAutoData','Automatisierte Daten einbinden?'),"LimitOfEntries");
 		$fields->addFieldToTab('Root.Automatisierte Daten', new TreeMultiselectField('Pages','Einzelne Seiten, die auch angezeigt werden sollen',SiteTree::class));
 
 		/* Wenn Layoutauswahl möglich
@@ -136,7 +136,7 @@ class CO_TeaserSection extends ContentObject{
 		}
 		if($this->UseAutoData){
 			if($this->CategoryID){
-				foreach($this->Category()->AllChildren()->sort("Date","DESC")->limit($this->Limit) as $c){
+				foreach($this->Category()->AllChildren()->sort("Date","DESC")->limit($this->LimitOfEntries) as $c){
 					$c->SortID=$sortID+1;
 					$list->push($c);
 				}

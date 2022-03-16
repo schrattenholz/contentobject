@@ -17,7 +17,7 @@ class CO_Gallery_Image extends DataObject{
 		'Title'=>'Varchar(255)',
 		'SortID'=>'Int',
 		'Adult'=>'Boolean',
-		'DeepLinkHash'=>'Boolean'
+		//'DeepLinkHash'=>'Boolean'
 	];
 	private static $has_one=[
 		"Image"=>Image::class,
@@ -36,7 +36,7 @@ class CO_Gallery_Image extends DataObject{
 		$fields->addFieldToTab('Root.Main',new Textfield('Title','Titel'));
 		$fields->addFieldToTab("Root.Main",new TreeDropdownField("DeepLinkID","Zu verlinkende Seite",SiteTree::class));
 		$fields->addFieldToTab('Root.Main',new TextareaField('Description','2te Zeile'));
-		$fields->addFieldToTab('Root.Main',new CheckboxField('DeepLinkHash','Ausgewähltes Dokument wird in der übergeordneten Liste angezeigt (Kreationen)'));
+		//$fields->addFieldToTab('Root.Main',new CheckboxField('DeepLinkHash','Ausgewähltes Dokument wird in der übergeordneten Liste angezeigt (Kreationen)'));
 		//$fields->addFieldToTab('Root.Main',new Textfield('LineThree','3te Zeile'));
 		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
 		$fields->removeFieldFromTab('Root.Main','SortID');

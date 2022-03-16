@@ -6,12 +6,18 @@ namespace Schrattenholz\ContentObject;
 use Silverstripe\ORM\DataObject;
 use Silverstripe\Assets\Image;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\Textfield;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 class CO_Gallery_Image extends DataObject{
 	private static $table_name="CO_Gallery_Image";
 	private static $db=[
 		'Title'=>'Varchar(255)',
 		'SortID'=>'Int',
-		'Adult'=>'Boolean'
+		'Adult'=>'Boolean',
+		'DeepLinkHash'=>'Boolean'
 	];
 	private static $has_one=[
 		"Image"=>Image::class,
@@ -24,6 +30,17 @@ class CO_Gallery_Image extends DataObject{
 			$this->Title=$this->Image()->Title;
 		}
 		
+	}
+	public function getCMSFields(){
+		$fields=parent::getCMSFields();
+		$fields->addFieldToTab('Root.Main',new Textfield('Title','Titel'));
+		$fields->addFieldToTab("Root.Main",new TreeDropdownField("DeepLinkID","Zu verlinkende Seite","Page"));
+		$fields->addFieldToTab('Root.Main',new TextareaField('Description','2te Zeile'));
+		$fields->addFieldToTab('Root.Main',new CheckboxField('DeepLinkHash','Ausgewähltes Dokument wird in der übergeordneten Liste angezeigt (Kreationen)'));
+		//$fields->addFieldToTab('Root.Main',new Textfield('LineThree','3te Zeile'));
+		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
+		$fields->removeFieldFromTab('Root.Main','SortID');
+		return $fields;	
 	}
 	public function onAfterWrite(){
 	   parent::onAfterWrite();

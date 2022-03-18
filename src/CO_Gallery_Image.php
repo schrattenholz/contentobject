@@ -7,8 +7,10 @@ use Silverstripe\ORM\DataObject;
 use Silverstripe\Assets\Image;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\Textfield;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\ORM\DataList;
@@ -18,6 +20,9 @@ class CO_Gallery_Image extends DataObject{
 		'Title'=>'Varchar(255)',
 		'SortID'=>'Int',
 		'Adult'=>'Boolean',
+		'Video'=>'Text',
+		'Video_Autoplay'=>'Boolean',
+		'Video_Format'=>'ENUM("16-9,4-3","16-9")'
 		//'DeepLinkHash'=>'Boolean'
 	];
 	private static $has_one=[
@@ -37,9 +42,13 @@ class CO_Gallery_Image extends DataObject{
 		$fields->addFieldToTab('Root.Main',new Textfield('Title','Titel'));
 		$fields->addFieldToTab("Root.Main",new TreeDropdownField("DeepLinkID","Zu verlinkende Seite",SiteTree::class));
 		$fields->addFieldToTab('Root.Main',new TextareaField('Description','2te Zeile'));
-		//$fields->addFieldToTab('Root.Main',new CheckboxField('DeepLinkHash','Ausgewähltes Dokument wird in der übergeordneten Liste angezeigt (Kreationen)'));
-		//$fields->addFieldToTab('Root.Main',new Textfield('LineThree','3te Zeile'));
 		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
+		$fields->addFieldToTab('Root.Video',new TextField("Video","Youtube-Video"));
+		$fields->addFieldToTab('Root.Video',new CheckboxField("Video_Autoplay","Autoplay aktivieren"));
+		$fields->addFieldToTab('Root.Video',new DropdownField("Video_Format","Format des Video auswählen",singleton("FlexSliderImage")->dbObject("Video_Format")->enumValues()));
+
+		$fields->addFieldToTab('Root.Video',new LiteralField("YoutubeInfo",'Youtube-Video einfügen <ul><li>Auf Youtube das entpsprechende Video öffnen</li><li>Kopieren Sie aus der Browserzeile den Video-Code (https://www.youtube.com/watch?v=<strong>ODlMfKMBzy4</strong>)</li><li>Fügen Sie den Video-Code im Feld Youtube-Video ein.</li></ul>'));
+		
 		$fields->removeFieldFromTab('Root.Main','SortID');
 		$fields->removeFieldFromTab('Root.Main','GalleryID');
 		return $fields;	

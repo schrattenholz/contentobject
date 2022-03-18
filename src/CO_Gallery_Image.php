@@ -22,7 +22,7 @@ class CO_Gallery_Image extends DataObject{
 		'Adult'=>'Boolean',
 		'Video'=>'Text',
 		'Video_Autoplay'=>'Boolean',
-		'Video_Format'=>'ENUM("16-9,4-3","16-9")'
+		'Video_Format'=>'Enum("16-9,4-3","16-9")'
 		//'DeepLinkHash'=>'Boolean'
 	];
 	private static $has_one=[

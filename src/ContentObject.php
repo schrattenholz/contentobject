@@ -27,6 +27,7 @@ class ContentObject extends DataObject{
 	private static $table_name="contentobject";
 	private static $db=array(
 		'Title'=>'Text',
+		'SubTitle'=>'Text',
 		'SortID'=>'Int',
 		'Spacer'=>'Enum("small,medium,big,none","medium")',
 		'ObjectWidth'=>'Enum("small,big,full","full")',
@@ -54,6 +55,7 @@ class ContentObject extends DataObject{
 		$fields=parent::getCMSFields();
 		//$fields->addFieldToTab('Root.Main',new DropdownField('Spacer','Abstand zum n&auml;chsten Content-Objekt',singleton('ContentObject')->dbObject('Spacer')->enumValues()));
 		$fields->addFieldToTab('Root.Main',new TextField('Title','Titel'),'ShowTitle');
+		$fields->addFieldToTab('Root.Main',new TextField('SubTitle','Unterüberschrift'),'ShowTitle');
 		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Überschrift anzeigen'));
 		$fields->addFieldToTab('Root.Main', new CheckboxField('Background','Hintergrund anzeigen'));
 		$fields->addFieldToTab('Root.Main',new DropdownField('ColorSetID','Farbschema wählen',ColorSet::get()->map("ID", "Title", "Bitte auswählen")));

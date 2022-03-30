@@ -45,7 +45,7 @@ class CO_Gallery_Image extends DataObject{
 		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
 		$fields->addFieldToTab('Root.Video',new TextField("Video","Youtube-Video"));
 		$fields->addFieldToTab('Root.Video',new CheckboxField("Video_Autoplay","Autoplay aktivieren"));
-		$fields->addFieldToTab('Root.Video',new DropdownField("Video_Format","Format des Video auswählen",singleton(CO_Gallery_Image:class)->dbObject("Video_Format")->enumValues()));
+		$fields->addFieldToTab('Root.Video',new DropdownField("Video_Format","Format des Video auswählen",singleton(CO_Gallery_Image::class)->dbObject("Video_Format")->enumValues()));
 
 		$fields->addFieldToTab('Root.Video',new LiteralField("YoutubeInfo",'Youtube-Video einfügen <ul><li>Auf Youtube das entpsprechende Video öffnen</li><li>Kopieren Sie aus der Browserzeile den Video-Code (https://www.youtube.com/watch?v=<strong>ODlMfKMBzy4</strong>)</li><li>Fügen Sie den Video-Code im Feld Youtube-Video ein.</li></ul>'));
 		

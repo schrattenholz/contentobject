@@ -22,6 +22,9 @@ class CO_HTMLText extends ContentObject{
 	public function getContents(){
 		return $this->Content;
 	}
+	public function renderIt(){
+		return false;
+	}
 	private static $singular_name ="Textelement";
 	private static $plural_name = "Textelemente"; 
 }

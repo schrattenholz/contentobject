@@ -42,7 +42,8 @@ class CO_Gallery extends ContentObject{
 	private static $singular_name ="Galerie";
 	private static $plural_name = "Galerien"; 
 	private static $db=[
-	"Content"=>"HTMLText"
+	"Content"=>"HTMLText",
+	"ContentAfter"=>"HTMLText"
 	];
 	private static $has_many=[
 		"Images"=>CO_Gallery_Image::class
@@ -65,6 +66,7 @@ class CO_Gallery extends ContentObject{
 				$layout=DropdownField::create('LayoutID',_t('CO_TeaserSection.Layout','Layout'),CO_Gallery_Layout::get()->map('ID', 'Title'));
 		$layout->setEmptyString('(Bitte Layout wählen)');
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField("Content","Inhat vor der Galerie"));
+		$fields->addFieldToTab('Root.Main',new HTMLEditorField("ContentAfter","Inhat nach der Galerie"));
 		$fields->addFieldToTab('Root.Main',$layout);
 		//GridField
 			$gridFieldConfig=GridFieldConfig::create()

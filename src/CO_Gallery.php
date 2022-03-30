@@ -64,7 +64,7 @@ class CO_Gallery extends ContentObject{
 		$fields->removeByName("Images");
 				$layout=DropdownField::create('LayoutID',_t('CO_TeaserSection.Layout','Layout'),CO_Gallery_Layout::get()->map('ID', 'Title'));
 		$layout->setEmptyString('(Bitte Layout wählen)');
-		$fields->addFieldToTab('Root.Main',new HTMLEditorField("Content","Inhat vor der Galerie"));
+		$fields->addFieldToTab('Root.Main',new HTMLEditorField("Content","Inhalt vor der Galerie"));
 		$fields->addFieldToTab('Root.Main',$layout);
 		//GridField
 			$gridFieldConfig=GridFieldConfig::create()

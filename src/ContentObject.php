@@ -37,7 +37,7 @@ class ContentObject extends DataObject{
 		'Slot'=>'Text'
 	);
 	private static $extensions = [
-        Versioned::class,
+        //Versioned::class,
     ];
 	private static $has_one=array(
 		'Page'=>SiteTree::class,

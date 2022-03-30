@@ -56,12 +56,13 @@ class ContentObjectExtension extends Extension{
 			->addComponent(new GridFieldPaginator())
 			->addComponent(new GridFieldOrderableRows('SortID'))
 		;
-		 $multiClassConfig = new GridFieldAddNewMultiClass();
+		$multiClassConfig = new GridFieldAddNewMultiClass();
         $multiClassConfig->setClasses(
             array(
                 'Schrattenholz\ContentObject\CO_TeaserSection',
 				'Schrattenholz\ContentObject\CO_Infobox',
 				'Schrattenholz\ContentObject\CO_Gallery',
+				'Schrattenholz\ContentObject\CO_HTMLText',
 				'Schrattenholz\ContentObject\SeveralCols',
 				
             )

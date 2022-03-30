@@ -82,7 +82,7 @@ class CO_Gallery_Image extends DataObject{
 	public function getThumbnail(){
 		return $this->Image()->CMSThumbnail();
 	}
-	private static $owner=[
+	private static $owns=[
 		'Image'
 	];
 }

@@ -14,6 +14,8 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\ORM\DataList;
+use SilverStripe\Core\Injector\Injector;
+use Psr\Log\LoggerInterface;
 class CO_Gallery_Image extends DataObject{
 	private static $table_name="CO_Gallery_Image";
 	private static $db=[
@@ -56,6 +58,7 @@ class CO_Gallery_Image extends DataObject{
 	public function onAfterWrite(){
 	   parent::onAfterWrite();
 		if ($this->Image()->exists() && !$this->Image()->isPublished()){
+			Injector::inst()->get(LoggerInterface::class)->error($this->owner->MenuTitle.'   BlogExtension.php BasicExtension_MainImage MainImage()->ID='.$this->owner->MainImage()->Filename);
 		  $this->Image()->doPublish();
 		}
 	 }

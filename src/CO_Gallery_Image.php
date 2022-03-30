@@ -55,13 +55,13 @@ class CO_Gallery_Image extends DataObject{
 		$fields->removeFieldFromTab('Root.Main','GalleryID');
 		return $fields;	
 	}
-	public function onAfterWrite(){
+	/*public function onAfterWrite(){
 	   parent::onAfterWrite();
 		if ($this->Image()->exists() && !$this->Image()->isPublished()){
 			Injector::inst()->get(LoggerInterface::class)->error($this->owner->MenuTitle.'   BlogExtension.php BasicExtension_MainImage MainImage()->ID='.$this->owner->MainImage()->Filename);
 		  $this->Image()->doPublish();
 		}
-	 }
+	 }*/
 	 	public function PageDeepLinkHash(){
 		$page=DataList::create(SiteTree::class)->where('ID='.$this->PageLinkID)->First;
 		if($this->DeepLinkHash){

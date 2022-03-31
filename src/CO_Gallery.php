@@ -47,6 +47,9 @@ class CO_Gallery extends ContentObject{
 	private static $has_many=[
 		"Images"=>CO_Gallery_Image::class
 	];
+	private static $owns=[
+		"Images"
+	];
 	private static $has_one=array(
 		'Category'=>SiteTree::class,
 		'Layout'=>CO_Gallery_Layout::class

@@ -84,6 +84,9 @@ class CO_Gallery extends ContentObject{
 				//->addComponent(new GridFieldAddNewInlineButton())
 				->addComponent($bulkUploader=new \Colymba\BulkUpload\BulkUploader('Image'))
 			;
+			$gridFieldConfig
+            ->getComponentByType(GridFieldDetailForm::class)
+            ->setItemRequestClass(VersionedGridFieldItemRequest::class);
 			$editableColumns->setDisplayFields(array(
 					'Title' => array(
 					'title' => 'Titel',

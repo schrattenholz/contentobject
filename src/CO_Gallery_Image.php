@@ -14,6 +14,7 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\ORM\DataList;
+use SilverStripe\Versioned\Versioned;
 use SilverStripe\Core\Injector\Injector;
 use Psr\Log\LoggerInterface;
 class CO_Gallery_Image extends DataObject{

@@ -40,7 +40,7 @@ class CO_Gallery_Image extends DataObject{
 		}
 	}
 	private static $extensions = [
-        Versioned::class,
+        //Versioned::class,
     ];
 	public function getCMSFields(){
 		$fields=parent::getCMSFields();

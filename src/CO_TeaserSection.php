@@ -38,7 +38,7 @@ class CO_TeaserSection extends ContentObject{
 		"LimitOfEntries"=>"Int",
 		"Content"=>'HTMLText',
 		"ButtonTitle"=>"Varchar(255)",
-		"HasButton"=>"Boolean"
+		"HasButton"=>"Boolean",
 		"UseAutoData"=>"Boolean",
 		"ShowTitle"=>"Boolean"
 	);

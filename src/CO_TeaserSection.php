@@ -89,7 +89,7 @@ class CO_TeaserSection extends ContentObject{
 		$layout->setEmptyString('(Bitte Layout wählen)');
 		$fields->addFieldToTab('Root.Main',$layout);
 		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Formatierte Überschrift anzeigen'),'Content');
-		$fields->addFieldToTab('Root.Automatisierte Daten',new CheckboxField('HasButton','Button anzeigen'),"ButtonTitle");
+		$fields->addFieldToTab('Root.Main',new CheckboxField('HasButton','Button anzeigen'),"ButtonTitle");
 		$fields->addFieldToTab('Root.Main',new TextField('ButtonTitle','Button-Beschriftung'),'Content');
 		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('LimitOfEntries','Anzahl anzuzeigende Beiträge'));
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt oberhalb der Teaserboxen'));

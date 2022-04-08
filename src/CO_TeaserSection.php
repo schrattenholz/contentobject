@@ -37,7 +37,8 @@ class CO_TeaserSection extends ContentObject{
 	private static $db=array(
 		"LimitOfEntries"=>"Int",
 		"Content"=>'HTMLText',
-		"ReadMore"=>"Varchar(255)",
+		"ButtonTitle"=>"Varchar(255)",
+		"HasButton"=>"Boolean"
 		"UseAutoData"=>"Boolean",
 		"ShowTitle"=>"Boolean"
 	);
@@ -46,10 +47,9 @@ class CO_TeaserSection extends ContentObject{
         'Description',
 		'Title',
 		'Content',
-		'SubHead',
-		'ReadMore'
+		'ButtonTitle'
     ];
-	private static $defaults = array('ReadMore' => "Mehr lesen...");
+	private static $defaults = array('ButtonTitle' => "Mehr lesen...");
 	private static $has_one=array(
 		'Category'=>SiteTree::class,
 		'Layout'=>CO_TeaserSection_Layout::class
@@ -89,9 +89,11 @@ class CO_TeaserSection extends ContentObject{
 		$layout->setEmptyString('(Bitte Layout wählen)');
 		$fields->addFieldToTab('Root.Main',$layout);
 		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Formatierte Überschrift anzeigen'),'Content');
+		$fields->addFieldToTab('Root.Automatisierte Daten',new CheckboxField('HasButton','Button anzeigen'),"ButtonTitle");
+		$fields->addFieldToTab('Root.Main',new CheckboxField('ButtonTitle','Button-Beschriftung'),'Content');
 		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('LimitOfEntries','Anzahl anzuzeigende Beiträge'));
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt oberhalb der Teaserboxen'));
-		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Teaser-Kategorie',SiteTree::class));
+		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Teaser-Kategorie',SiteTree::class,"ButtonTitle"));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new CheckboxField('UseAutoData','Automatisierte Daten einbinden?'),"LimitOfEntries");
 		$fields->addFieldToTab('Root.Automatisierte Daten', new TreeMultiselectField('Pages','Einzelne Seiten, die auch angezeigt werden sollen',SiteTree::class));
 

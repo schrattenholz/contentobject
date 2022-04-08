@@ -90,7 +90,7 @@ class CO_TeaserSection extends ContentObject{
 		$layout->setEmptyString('(Bitte Layout wählen)');
 		$fields->addFieldToTab('Root.Main',$layout);
 		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Überschrift anzeigen'),'Content');
-		$fields->addFieldToTab('Root.Main',new CheckboxField('HasButton','Button anzeigen'),'Content');
+		$fields->addFieldToTab('Root.Main',new CheckboxField('HasButton','Button anzeigen'),'ColorSetID');
 		$fields->addFieldToTab('Root.Main',new TreeDropdownField('ButtonLinkID','Button-Link',SiteTree::class,'HasButton'));
 		$fields->addFieldToTab('Root.Main',new TextField('ButtonTitle','Button-Beschriftung'),'ButtonLinkID');		
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt oberhalb der Teaserboxen'));

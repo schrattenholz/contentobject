@@ -91,11 +91,12 @@ class CO_TeaserSection extends ContentObject{
 		$fields->addFieldToTab('Root.Main',$layout);
 		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Überschrift anzeigen'),'Content');
 		$fields->addFieldToTab('Root.Main',new CheckboxField('HasButton','Button anzeigen'),'Content');
-		$fields->addFieldToTab('Root.Main',new TreeDropdownField('ButtonLinkID','Button-Link',SiteTree::class,'Content'));
-				$fields->addFieldToTab('Root.Main',new TextField('ButtonTitle','Button-Beschriftung'),'Content');
-		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('LimitOfEntries','Anzahl anzuzeigende Beiträge'));
+		$fields->addFieldToTab('Root.Main',new TreeDropdownField('ButtonLinkID','Button-Link',SiteTree::class,'HasButton'));
+		$fields->addFieldToTab('Root.Main',new TextField('ButtonTitle','Button-Beschriftung'),'ButtonLinkID');		
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt oberhalb der Teaserboxen'));
-		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Teaser-Kategorie',SiteTree::class,"ButtonTitle"));
+		
+		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('LimitOfEntries','Anzahl anzuzeigende Beiträge'));
+		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Teaser-Kategorie',SiteTree::class));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new CheckboxField('UseAutoData','Automatisierte Daten einbinden?'),"LimitOfEntries");
 		$fields->addFieldToTab('Root.Automatisierte Daten', new TreeMultiselectField('Pages','Einzelne Seiten, die auch angezeigt werden sollen',SiteTree::class));
 

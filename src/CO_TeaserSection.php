@@ -39,8 +39,7 @@ class CO_TeaserSection extends ContentObject{
 		"Content"=>'HTMLText',
 		"ReadMore"=>"Varchar(255)",
 		"UseAutoData"=>"Boolean",
-		"ShowTitle"=>"Boolean",
-		"SubHead"=>"Varchar(255)"
+		"ShowTitle"=>"Boolean"
 	);
     private static $translate = [
         'Heading',
@@ -90,8 +89,6 @@ class CO_TeaserSection extends ContentObject{
 		$layout->setEmptyString('(Bitte Layout wählen)');
 		$fields->addFieldToTab('Root.Main',$layout);
 		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Formatierte Überschrift anzeigen'),'Content');
-		$fields->addFieldToTab('Root.Main',new TextField('Title','Headline'));
-		$fields->addFieldToTab('Root.Main',new TextField('SubHead','SubHead'));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('LimitOfEntries','Anzahl anzuzeigende Beiträge'));
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt oberhalb der Teaserboxen'));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Teaser-Kategorie',SiteTree::class));

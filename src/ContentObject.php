@@ -54,7 +54,7 @@ class ContentObject extends DataObject{
 	public function getCMSFields(){
 		$fields=parent::getCMSFields();
 		//$fields->addFieldToTab('Root.Main',new DropdownField('Spacer','Abstand zum n&auml;chsten Content-Objekt',singleton('ContentObject')->dbObject('Spacer')->enumValues()));
-		$fields->addFieldToTab('Root.Main',new TextField('Title','Titel'),'ShowTitle');
+		$fields->addFieldToTab('Root.Main',new TextField('Title','Überschrift'),'ShowTitle');
 		$fields->addFieldToTab('Root.Main',new TextField('SubTitle','Unterüberschrift'),'ShowTitle');
 		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Überschrift anzeigen'));
 		$fields->addFieldToTab('Root.Main', new CheckboxField('Background','Hintergrund anzeigen'));

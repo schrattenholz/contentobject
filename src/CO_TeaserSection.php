@@ -52,6 +52,7 @@ class CO_TeaserSection extends ContentObject{
 	private static $defaults = array('ButtonTitle' => "Mehr lesen...");
 	private static $has_one=array(
 		'Category'=>SiteTree::class,
+		'ButtonLink'=>SiteTree::class,
 		'Layout'=>CO_TeaserSection_Layout::class
 	);
 	private static $has_many=array(
@@ -88,9 +89,10 @@ class CO_TeaserSection extends ContentObject{
 		$layout=DropdownField::create('LayoutID',_t('CO_TeaserSection.Layout','Layout'),CO_TeaserSection_Layout::get()->map('ID', 'Title'));
 		$layout->setEmptyString('(Bitte Layout wählen)');
 		$fields->addFieldToTab('Root.Main',$layout);
-		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Formatierte Überschrift anzeigen'),'Content');
-		$fields->addFieldToTab('Root.Main',new CheckboxField('HasButton','Button anzeigen'),"ButtonTitle");
-		$fields->addFieldToTab('Root.Main',new TextField('ButtonTitle','Button-Beschriftung'),'Content');
+		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Überschrift anzeigen'),'Content');
+		$fields->addFieldToTab('Root.Main',new CheckboxField('HasButton','Button anzeigen'),'Content');
+		$fields->addFieldToTab('Root.Main',new TreeDropdownField('ButtonLinkID','Button-Link',SiteTree::class,'Content'));
+				$fields->addFieldToTab('Root.Main',new TextField('ButtonTitle','Button-Beschriftung'),'Content');
 		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('LimitOfEntries','Anzahl anzuzeigende Beiträge'));
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt oberhalb der Teaserboxen'));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Teaser-Kategorie',SiteTree::class,"ButtonTitle"));

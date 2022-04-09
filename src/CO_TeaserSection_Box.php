@@ -4,7 +4,7 @@ namespace Schrattenholz\ContentObject;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\HTMLEditorField;
+SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\Security\Permission;
 use Silverstripe\Assets\Image;

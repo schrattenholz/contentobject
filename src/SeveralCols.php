@@ -115,8 +115,11 @@ class SeveralCols extends ContentObject{
 	public function getCustomTitle(){
 		return $this->Title;
 	}
-	public function renderIt(){
-		return $this->renderWith($this->ClassName);	
+	public function renderIt($Pos=1,$ParentID=0){
+		$data=new ArrayData();
+		$data->Pos=$Pos;
+		$data->ParentID=$ParentID;
+		return $this->customise($data)->renderWith($this->ClassName);	
 	}
 	public function FirstLetter(){
 		$ar=str_split($this->Title);

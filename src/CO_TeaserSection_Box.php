@@ -4,6 +4,7 @@ namespace Schrattenholz\ContentObject;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\HTMLEditorField;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\Security\Permission;
 use Silverstripe\Assets\Image;
@@ -20,7 +21,8 @@ class CO_TeaserSection_Box extends DataObject{
 	private static $db=array(
 		'Title'=>'Text',
 		'SortID'=>'Int',
-		'ReadMore'=>'Varchar(100)'
+		'ReadMore'=>'Varchar(100)',
+		'Content'=>'HTMLText'
 		
 	);
     private static $translate = [
@@ -39,6 +41,7 @@ class CO_TeaserSection_Box extends DataObject{
 		$fields=parent::getCMSFields();
 		$fields->addFieldToTab('Root.Main',new TextField("Title","Bezeichnung"));
 		$fields->addFieldToTab('Root.Main',new TextField('ReadMore','Beschriftung'));
+		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt (wird nicht in jedem Layout unterstützt.'));
 		if(ColorSet::get()){
 			$fields->addFieldToTab('Root.Main',new DropdownField('ColorSetID','Farbschema wählen',ColorSet::get()->map("ID", "Title", "Bitte auswählen")));
 		}

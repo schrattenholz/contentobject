@@ -36,7 +36,7 @@ class ContentObject extends DataObject{
 		'Background'=>'Boolean',
 		'ShowTitle'=>'Boolean(1)',
 		'Slot'=>'Text',
-		'AnchorID'
+		'AnchorID'=>'Varchar(255)'
 	);
 	private static $extensions = [
         Versioned::class,

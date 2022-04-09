@@ -12,6 +12,7 @@ use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\CheckboxField;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\Forms\GridField\GridField;
@@ -54,7 +55,8 @@ class CO_TeaserSection extends ContentObject{
 	private static $has_one=array(
 		'Category'=>SiteTree::class,
 		'ButtonLink'=>SiteTree::class,
-		'Layout'=>CO_TeaserSection_Layout::class
+		'Layout'=>CO_TeaserSection_Layout::class,
+		'MainImage'=>Image::class
 	);
 	private static $has_many=array(
 		'CO_TeaserSection_Boxes'=>CO_TeaserSection_Box::class
@@ -96,6 +98,7 @@ class CO_TeaserSection extends ContentObject{
 		$fields->addFieldToTab('Root.Main',new TextField('ButtonTitle','Button-Beschriftung'),'ButtonLinkID');		
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt oberhalb der Teaserboxen'));
 		$fields->addFieldToTab('Root.Main',new TextField('ButtonAnchor','Anker zu einem Abschnitt auf der ausgewählten Seite (Button-Link)'));	
+		$fields->addFieldToTab('Root.Main',new UploadField('MainImage','Hauptbild (Nicht in allen Layouts verfügbar)'));	
 		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('LimitOfEntries','Anzahl anzuzeigende Beiträge'));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Teaser-Kategorie',SiteTree::class));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new CheckboxField('UseAutoData','Automatisierte Daten einbinden?'),"LimitOfEntries");

@@ -23,6 +23,7 @@ use SilverStripe\Security\Permission;
 use SilverStripe\Versioned\Versioned;
 use Schrattenholz\TemplateConfig\ColorSet;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\View\ArrayData;
 class ContentObject extends DataObject{
 	private static $table_name="contentobject";
 	private static $db=array(
@@ -89,8 +90,10 @@ class ContentObject extends DataObject{
 	public function getCustomTitle(){
 		return $this->Title;
 	}
-	public function renderIt(){
-		return $this->renderWith($this->ClassName);	
+	public function renderIt($pos=1){
+		$data=new ArrayData();
+		$data->Pos=$pos;
+		return $this->customise($data)->renderWith($this->ClassName);	
 	}
 	public function FirstLetter(){
 		$ar=str_split($this->Title);

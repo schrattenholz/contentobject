@@ -13,6 +13,7 @@ use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\Image;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\Forms\GridField\GridField;

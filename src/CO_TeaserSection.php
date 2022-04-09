@@ -95,7 +95,7 @@ class CO_TeaserSection extends ContentObject{
 		$fields->addFieldToTab('Root.Main',new TreeDropdownField('ButtonLinkID','Button-Link',SiteTree::class));
 		$fields->addFieldToTab('Root.Main',new TextField('ButtonTitle','Button-Beschriftung'),'ButtonLinkID');		
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt oberhalb der Teaserboxen'));
-		$fields->addFieldToTab('Root.Main',new TextField('ButtonAnchor','Anker zu einem Abschnitt'),'ButtonLinkID');	
+		$fields->addFieldToTab('Root.Main',new TextField('ButtonAnchor','Anker zu einem Abschnitt auf der ausgewählten Seite (Button-Link)'));	
 		$fields->addFieldToTab('Root.Automatisierte Daten',new NumericField('LimitOfEntries','Anzahl anzuzeigende Beiträge'));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new TreeDropdownField('CategoryID','Teaser-Kategorie',SiteTree::class));
 		$fields->addFieldToTab('Root.Automatisierte Daten',new CheckboxField('UseAutoData','Automatisierte Daten einbinden?'),"LimitOfEntries");

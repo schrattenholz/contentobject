@@ -90,9 +90,10 @@ class ContentObject extends DataObject{
 	public function getCustomTitle(){
 		return $this->Title;
 	}
-	public function renderIt($pos=1){
+	public function renderIt($Pos=1,$ParentID=0){
 		$data=new ArrayData();
-		$data->Pos=$pos;
+		$data->Pos=$Pos;
+		$data->ParentID=$ParentID;
 		return $this->customise($data)->renderWith($this->ClassName);	
 	}
 	public function FirstLetter(){

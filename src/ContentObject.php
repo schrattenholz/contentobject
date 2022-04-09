@@ -35,7 +35,8 @@ class ContentObject extends DataObject{
 		"HTMLTag"=>"Enum('article,section,aside,none','article')",
 		'Background'=>'Boolean',
 		'ShowTitle'=>'Boolean(1)',
-		'Slot'=>'Text'
+		'Slot'=>'Text',
+		'AnchorID'
 	);
 	private static $extensions = [
         Versioned::class,
@@ -57,6 +58,7 @@ class ContentObject extends DataObject{
 		//$fields->addFieldToTab('Root.Main',new DropdownField('Spacer','Abstand zum n&auml;chsten Content-Objekt',singleton('ContentObject')->dbObject('Spacer')->enumValues()));
 		$fields->addFieldToTab('Root.Main',new TextField('Title','Überschrift'),'ShowTitle');
 		$fields->addFieldToTab('Root.Main',new TextField('SubTitle','Unterüberschrift'),'ShowTitle');
+		$fields->addFieldToTab('Root.Main',new TextField('AnchorID','Anker (klein und zusammengeschrieben)'),'ShowTitle');
 		$fields->addFieldToTab('Root.Main',new CheckboxField('ShowTitle','Überschrift anzeigen'));
 		$fields->addFieldToTab('Root.Main', new CheckboxField('Background','Hintergrund anzeigen'));
 		$fields->addFieldToTab('Root.Main',new DropdownField('ColorSetID','Farbschema wählen',ColorSet::get()->map("ID", "Title", "Bitte auswählen")));

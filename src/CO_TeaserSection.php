@@ -67,6 +67,8 @@ class CO_TeaserSection extends ContentObject{
 	);
 	private static $singular_name ="Teaser Element";
 	private static $plural_name = "CO_TeaserSection Boxen"; 
+	
+
 	public function provideI18nEntities() {
  
         $entities = parent::provideI18nEntities();

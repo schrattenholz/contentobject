@@ -42,7 +42,7 @@ class ContentObjectExtension extends Extension{
 		'CO_TeaserSections'=>CO_TeaserSection::class
 	);
 	public function DeepLink(){
-		return $this->owner->Link();
+		return $this->owner;
 	}
 	public function updateCMSFields(FieldList $fields) {
 		

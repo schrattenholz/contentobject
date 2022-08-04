@@ -41,6 +41,9 @@ class ContentObjectExtension extends Extension{
 	private static $belongs_many_many=array(
 		'CO_TeaserSections'=>CO_TeaserSection::class
 	);
+	public function DeepLink(){
+		return $this->Link();
+	}
 	public function updateCMSFields(FieldList $fields) {
 		
 		

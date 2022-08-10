@@ -1,6 +1,6 @@
-     <div  class="$ColorSet.Class py-5">
+     <div  class="<% if $ColorSetID %>colorSet{$ColorSetID} <% end_if %> py-5">
 	<!-- Featured category -->
-    <section class="container mb-4 pb-3 pb-sm-0 mb-sm-5">
+    <section class="container mb-4 pb-3 pb-sm-0 mb-sm-5 ">
 		<div class="row">
 			<div class="col-12">
 					<div class="mb-1 ">

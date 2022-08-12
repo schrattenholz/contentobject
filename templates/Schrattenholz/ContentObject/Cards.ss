@@ -1,6 +1,6 @@
-<div  class=" bg-white py-5">
+<div  class=" colorSet{$ColorSetID} py-5">
 	<!-- Featured category -->
-	<section class="container">
+	<section class="container ">
 		<div class="row">
 			<!-- Product grid (carousel)-->
 			<div class="col pt-4 pt-md-0 d-flex">

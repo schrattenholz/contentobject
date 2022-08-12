@@ -1,3 +1,4 @@
+<div  class=" colorSet{$ColorSetID} py-5">
     <!-- Featured category (Hoodie)-->
     <section class="container mb-4 pb-3 pb-sm-0 mb-sm-5">
       <div class="row">
@@ -65,3 +66,4 @@
         </div>
       </div>
     </section>
+	</div>

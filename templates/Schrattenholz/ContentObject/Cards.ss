@@ -23,8 +23,8 @@
 						  <div class="position-absolute text-left" style="bottom:1rem;">
 						  <% end_if %>
 
-							<h5 class="card-title px-3 mb-0"><% if $TeaserTitle %>$TeaserTitle<% else %>$Title<% end_if %></h5>
-							<% if $TeaserText %><p class="card-text font-size-sm px-3"><% if $TeaserText == 0 %>0<% else %>$TeaserText<% end_if %></p><% end_if %>
+							<h5 class="card-title px-3 mb-0"><% if $TeaserTitle %>$TeaserTitle<% else %> $Title.RAW <% end_if %></h5>
+							<% if $TeaserText %><p class="card-text font-size-sm px-3">$TeaserText</p><% end_if %>
 						  <% if $DefaultImage %>
 						 </div>
 						  <% end_if %>

@@ -16,10 +16,11 @@ use Schrattenholz\TemplateConfig\ColorSet;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Core\Injector\Injector;
 use Psr\Log\LoggerInterface;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorConfig;
 class CO_TeaserSection_Box extends DataObject{
 	private static $table_name="co_teasersection_box";
 	private static $db=array(
-		'Title'=>'Text',
+		'Title'=>'HTMLText',
 		'SortID'=>'Int',
 		'ReadMore'=>'Varchar(100)',
 		'Content'=>'HTMLText'
@@ -39,7 +40,11 @@ class CO_TeaserSection_Box extends DataObject{
 	);
 	public function getCMSFields(){
 		$fields=parent::getCMSFields();
-		$fields->addFieldToTab('Root.Main',new TextField("Title","Bezeichnung"));
+		$customConfig = HtmlEditorConfig::get('cms')->removeButtons(
+		 'blockquote', 'hr','italic','bold','underline','removeformat','alignright','aligncenter','alignleft','alignjustify','justify','indent','outdent','bullist','numlist','paste','pastetext','files','media','link','anchor','code','toolbar','layout');
+
+		$titleField=new HTMLEditorField("Title","Bezeichnung",$customConfig);
+		$fields->addFieldToTab('Root.Main',$titleField);
 		$fields->addFieldToTab('Root.Main',new TextField('ReadMore','Beschriftung'));
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt (wird nicht in jedem Layout unterstützt.'));
 		if(ColorSet::get()){

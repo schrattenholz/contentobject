@@ -26,7 +26,7 @@ class CO_HTMLText_Image extends CO_HTMLText{
 	private static $owns = [
 		'Image'
 	];
-	private static $singular_name ="HTML und Bild";
+	private static $singular_name ="Text und Bild";
 	private static $plural_name = "HTML-Textelemente"; 
 	
 }

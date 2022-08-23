@@ -66,7 +66,8 @@ class ContentObjectExtension extends Extension{
 				'Schrattenholz\ContentObject\CO_Infobox',
 				'Schrattenholz\ContentObject\CO_Gallery',
 				'Schrattenholz\ContentObject\CO_HTMLText',
-				'Schrattenholz\ContentObject\SeveralCols',
+				'Schrattenholz\ContentObject\CO_HTMLText_Image',
+				//'Schrattenholz\ContentObject\SeveralCols',
 				
             )
         );

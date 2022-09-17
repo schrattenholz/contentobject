@@ -6,6 +6,9 @@
 		<div class="col text-center pb-1 pb-md-4">
 			<% if $ShowTitle %>
 					<h2  class="bg-headline pb-3"><span>$Title</span></h2>
+					<% if $SubTitle %>
+						<h6 class="font-size-lg font-weight-normal  pb-4">$SubTitle</h6>
+						<% end_if %>
 			<% end_if %>
 			$Content
 		</div>

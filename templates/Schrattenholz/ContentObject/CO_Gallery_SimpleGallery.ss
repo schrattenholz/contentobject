@@ -6,7 +6,13 @@
 				<!-- Product grid (carousel)-->
 				<div class="col-md-12 pt-4 pt-md-0 d-flex">
 					<div style="align-self:center;">
+						<% if $ShowTitle %>
 						<h2>$Title</h2>
+						<% if $SubTitle %>
+						<h6 class="font-size-lg font-weight-normal  pb-4">$SubTitle</h6>
+						<% end_if %>
+						<% end_if %>
+						
 						$Content
 					</div>
 				</div>

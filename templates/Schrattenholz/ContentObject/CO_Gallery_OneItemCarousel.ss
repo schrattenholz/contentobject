@@ -4,6 +4,9 @@
 		<div class="card-header">
 			<% if $ShowTitle %>
 					<h3  class="pb-3"><span>$Title</span></h3>
+					<% if $SubTitle %>
+						<h6 class="font-size-lg font-weight-normal  pb-4">$SubTitle</h6>
+						<% end_if %>
 			<% end_if %>
 			$Content
 		</div>

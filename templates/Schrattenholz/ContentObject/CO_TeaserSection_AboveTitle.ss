@@ -7,7 +7,7 @@
 				<% loop $LimitedEntries %>
 				<div class="col-sm-6">
 					<a class="d-block text-center text-decoration-none mr-1" href="$DeepLink.Link"><img class="d-block rounded mb-3" src="$DefaultImage.Fill(278,278).URL" alt="$Title">
-						<h3 class="font-size-base pt-1 mb-0">$Title</h3>
+						<h3 class="font-size-base pt-1 mb-0"><% if $TeaserTitle %>$TeaserTitle<% else %>$Title<% end_if %></h3>
 					</a>
 				</div>
 				<% end_loop %>

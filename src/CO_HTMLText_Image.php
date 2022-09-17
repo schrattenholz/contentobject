@@ -7,19 +7,21 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use Silverstripe\Assets\Image;
-
+use SilverStripe\Forms\CheckboxField;
 class CO_HTMLText_Image extends CO_HTMLText{
 	private static $table_name="co_htmltextimage";
 	private static $db=array(
 		'Content'=>'HTMLText',
 		'OuterBlock'=>'Boolean',
-		"SubHead"=>"Varchar(255)"
+		"SubHead"=>"Varchar(255)",
+		"ImageLeft"=>"Boolean"
 	);
 	private static $has_one=[
 		'Image'=>Image::class
 	];
 	public function getCMSFields(){
 		$fields=parent::getCMSFields();
+				$fields->addFieldToTab('Root.Main',new CheckboxField('ImageLeft','Bild auf der linken Seite'),'Content');
 		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
 		return $fields;
 	}

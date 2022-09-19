@@ -2,7 +2,7 @@
           <div class="d-flex flex-column h-100 justify-content-center bg-size-cover bg-position-center rounded-lg">
             <div class="pb-4 my-2 px-4">
               <!-- Contacts card: Shadow -->
-				<div class="card border-0 box-shadow">
+				<div class="card border-0 box-shadow colorSet{$ColorSetID}">
 				  <div class="card-body p-0">
 					<% if $ShowTitle %><h5 class="card-title pl-3 my-2">$Title</h5><% end_if %>
 					$Form

@@ -26,6 +26,7 @@ use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldEditButton;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridFieldSortableHeader;
+use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
 use SilverStripe\Forms\GridField\GridFieldPaginator;
 use SilverStripe\Forms\GridField\GridFieldFilterHeader;
 
@@ -57,6 +58,7 @@ class ContentObjectExtension extends Extension{
 			->addComponent(new GridFieldSortableHeader())
 			->addComponent(new GridFieldFilterHeader())
 			->addComponent(new GridFieldPaginator())
+			->addComponent(new GridFieldAddExistingAutocompleter())
 			->addComponent(new GridFieldOrderableRows('SortID'))
 		;
 		$multiClassConfig = new GridFieldAddNewMultiClass();

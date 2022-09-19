@@ -1,5 +1,5 @@
 <% if $PageID %>
-<div  class="$ColorSet.Class py-5">
+<div  class="colorSet{$ColorSetID} py-5">
     <section class="container ">
 <% end_if %>
 		<div class="row <% if $SeveralColsID %>no-gutters<% end_if %>">

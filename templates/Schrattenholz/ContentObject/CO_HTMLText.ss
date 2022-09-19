@@ -3,7 +3,7 @@
     <section class="container ">
 <% end_if %>
 		<div class="row <% if $SeveralColsID %>no-gutters<% end_if %>">
-			<div class="col-12">
+			<div class="col-12" style="max-width:40rem;margin:auto;>
 				<% if $ShowTitle %>
 					<% if $PageID %>
 					<h2  class=" pb-4">$Title</h2>

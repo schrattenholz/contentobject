@@ -7,7 +7,7 @@
 			  <a class="font-size-md " href="$Category.Link"><span class=" py-1 px-2" style="background-color:rgba(105,105,105,0.7);color:#ffe952;">$SubHead<i class="czi-arrow-right font-size-xs align-middle ml-1"></i></span></a>
               </div>
 -->
-        <div class="col-md-5"> sdfgsdf
+        <div class="col-md-5">
           <div class="d-flex flex-column h-100 overflow-hidden rounded-lg rounded-big-bottom-right" style="background-color: #e2e9ef;">
             <div class="d-block position-absolute justify-content-between px-grid-gutter py-grid-gutter">
               <div class="cz-custom-controls" id="hoodie-day">

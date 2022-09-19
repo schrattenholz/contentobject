@@ -1,4 +1,4 @@
-	<section class="container position-relative pt-3 pt-lg-0 pb-5 mt-lg-n10" style="z-index: 10;">
+	<section class="container position-relative pt-3 pt-lg-0 pb-5 mt-lg-n10 $ColorSet.Class" style="z-index: 10;">
       <div class="row">
         <div class="col-xl-6 col-lg-9">
           <div class="card border-0 box-shadow-lg">

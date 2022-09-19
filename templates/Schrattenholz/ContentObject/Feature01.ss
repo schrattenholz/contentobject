@@ -1,4 +1,4 @@
-<div  class="$ColorSet.Class py-5">
+<div  class="colorSet{$ColorSetID} py-5 ">
 	<!-- Featured category -->
 	<section class="container ">
 		<div class="row">

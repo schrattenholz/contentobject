@@ -12,6 +12,7 @@ class CO_HTMLText_Image extends CO_HTMLText{
 	private static $table_name="co_htmltextimage";
 	private static $db=array(
 		'Content'=>'HTMLText',
+		'Content2'=>'HTMLText',
 		'OuterBlock'=>'Boolean',
 		"SubHead"=>"Varchar(255)",
 		"ImageLeft"=>"Boolean"
@@ -21,7 +22,7 @@ class CO_HTMLText_Image extends CO_HTMLText{
 	];
 	public function getCMSFields(){
 		$fields=parent::getCMSFields();
-				$fields->addFieldToTab('Root.Main',new CheckboxField('ImageLeft','Bild auf der linken Seite'),'Content');
+		$fields->addFieldToTab('Root.Main',new CheckboxField('ImageLeft','Bild auf der linken Seite'),'Content');
 		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
 		return $fields;
 	}

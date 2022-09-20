@@ -1,3 +1,4 @@
+<div class="colorSet{$ColorSetID}">
 <section class="container-fluid mb-4 pb-3 pb-sm-0 mb-sm-5 px-0">
 <div class="row no-gutters">
 	<div class="col-md-6 bg-position-center bg-size-cover">
@@ -43,4 +44,4 @@
 		</div>
 	</div>
 </div>
-</section>
+</section></div>

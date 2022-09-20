@@ -4,6 +4,7 @@ namespace Schrattenholz\ContentObject;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\HTMLEditorField;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use Silverstripe\Assets\Image;
@@ -23,6 +24,7 @@ class CO_HTMLText_Image extends CO_HTMLText{
 	public function getCMSFields(){
 		$fields=parent::getCMSFields();
 		$fields->addFieldToTab('Root.Main',new CheckboxField('ImageLeft','Bild auf der linken Seite'),'Content');
+		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content2','Zweite Textspalte anstatt Bild'),'Content');
 		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
 		return $fields;
 	}

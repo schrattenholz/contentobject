@@ -19,23 +19,16 @@
 			<div class="card border-0 col-12 py-0 px-4">
 				<div class="cz-carousel ">
 					<div class="card-body cz-carousel-inner " data-carousel-options='{"items": 4, "nav": false, "gutter":20}'>
-						<% loop $Images %>
-									
-										<div data-slide-to="$Pos" data-target="#carouselExampleIndicators">
-										<!--<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button>
-							-->
+						<% loop $Images %>		
+						<div data-slide-to="$Pos" data-target="#carouselExampleIndicators">
 							<a onclick="javascript:var index$ID=$Pos-1;window['thumbCarousel$Up.ID'].goTo(index$ID);""><img src="$Image.Fill(278,278).URL" alt="Product"></a>
-										<div class=" py-2 bg-white"><a class="product-meta d-block font-size-xs pb-1" href="$Parent.Link">$Parent.MenuTitle</a>
-											<h3 class="product-title font-size-sm"><a href="<% if $DeepLink %>$DeepLink.Link<% else %> $Link <% end_if %>">$Title</a></h3>
-											<div class="d-flex justify-content-between">
-											<div class="product-price"><span class="text-accent">
+							<div class=" py-2 bg-white"><a class="product-meta d-block font-size-xs pb-1" href="$Parent.Link">$Parent.MenuTitle</a>
+								<h3 class="product-title font-size-sm"><a href="<% if $DeepLink %>$DeepLink.Link<% else %> $Link <% end_if %>">$Title</a></h3>
+								<div class="d-flex justify-content-between">
+									<div class="product-price"><span class="text-accent"></div>
 								</div>
-											<!--<div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
-											</div>-->
-											</div>
-										</div>
-										</div>
-									
+							</div>
+						</div>
 						<% end_loop %>
 					</div>
 				</div>

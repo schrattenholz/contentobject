@@ -44,8 +44,37 @@
 						<li class="media mb-0 pt-3 <% if $Elements.Sort('SortID').Filter("AfterStaticElements",1) %>border-bottom<% end_if %>">
 							
 							<div class="media-body mt-1 pl-3">
-							  <h4>Adresse</h4>
+							  <h4>Kontaktdaten</h4>
 							 <p class="font-size-ms"> $SiteConfig.MainContact</br>$SiteConfig.Street, $SiteConfig.ZIP $SiteConfig.City</p>
+							 <ul>
+							 <li class="media mb-0 pt-2">
+							 <h4>
+                                   <i class="czi-phone text-secondary"></i>
+								</h4>
+								<div class="media-body  pl-3">
+								$SiteConfig.Phone
+								</div>
+                               </li>
+							<% if $SiteConfig.Fax %>
+							<li  class="media mb-0 pt-2">
+							 <h4>
+                               <i class="czi-document text-secondary"></i>
+							</h4>
+							<div class="media-body pl-3">
+							$SiteConfig.Fax
+							</div>
+                               </li>
+							<% end_if %>
+                               <li class="media mb-0 pt-2">
+							 <h4>
+                                   <i class="czi-mail text-secondary"></i>
+								</h4>
+								<div class="media-body pl-3">
+								<a href="mailto:$SiteConfig.Email">$SiteConfig.Email</a>
+								</div>
+                               </li>
+                               <li class="media mb-0 pt-2">
+							   </ul>
 							</div>
 						</li>
 					  <% end_if %>

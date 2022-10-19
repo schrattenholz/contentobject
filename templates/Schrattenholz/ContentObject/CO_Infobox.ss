@@ -45,36 +45,27 @@
 							
 							<div class="media-body mt-1 pl-3">
 							  <h4>Kontaktdaten</h4>
-							 <p class="font-size-ms"> $SiteConfig.MainContact</br>$SiteConfig.Street, $SiteConfig.ZIP $SiteConfig.City</p>
-							 <ul>
-							 <li class="media mb-0 pt-2">
-							 <h4>
-                                   <i class="czi-phone text-secondary"></i>
-								</h4>
-								<div class="media-body  pl-3">
-								$SiteConfig.Phone
-								</div>
-                               </li>
-							<% if $SiteConfig.Fax %>
-							<li  class="media mb-0 pt-2">
-							 <h4>
-                               <i class="czi-document text-secondary"></i>
-							</h4>
-							<div class="media-body pl-3">
-							$SiteConfig.Fax
-							</div>
-                               </li>
-							<% end_if %>
-                               <li class="media mb-0 pt-2">
-							 <h4>
-                                   <i class="czi-mail text-secondary"></i>
-								</h4>
-								<div class="media-body pl-3">
-								<a href="mailto:$SiteConfig.Email">$SiteConfig.Email</a>
-								</div>
-                               </li>
-                               <li class="media mb-0 pt-2">
-							   </ul>
+							  <dt>
+								  <dl class="row">
+									<dt class="col-sm-3">Adresse</dt>
+									<dd class="col-sm-9">$SiteConfig.MainContact</br>$SiteConfig.Street, $SiteConfig.ZIP $SiteConfig.City</dd>
+								  </dl>
+								  <dl class="row">
+									<dt class="col-sm-3">Fon</dt>
+									<dd class="col-sm-9">$SiteConfig.Phone</dd>
+								  </dl>
+								
+								<% if $SiteConfig.Fax %>
+								  <dl class="row">
+									<dt class="col-sm-3">Fax</dt>
+									<dd class="col-sm-9">$SiteConfig.Fax</dd>
+								  </dl>
+								<% end_if %>
+															  <dl class="row">
+									<dt class="col-sm-3">E-Mail</dt>
+									<dd class="col-sm-9"><a href="mailto:$SiteConfig.Email">$SiteConfig.Email</a></dd>
+								  </dl>
+                               </dt>
 							</div>
 						</li>
 					  <% end_if %>

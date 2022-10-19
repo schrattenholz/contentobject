@@ -14,7 +14,6 @@ class CO_HTMLText_Image extends CO_HTMLText{
 	private static $db=array(
 		'Content'=>'HTMLText',
 		'Content2'=>'HTMLText',
-		'OuterBlock'=>'Boolean',
 		"SubHead"=>"Varchar(255)",
 		"ImageLeft"=>"Boolean"
 	);

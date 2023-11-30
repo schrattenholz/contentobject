@@ -20,7 +20,7 @@ use SilverStripe\Forms\HTMLEditor\HTMLEditorConfig;
 class CO_TeaserSection_Box extends DataObject{
 	private static $table_name="co_teasersection_box";
 	private static $db=array(
-		'Title'=>'HTMLText',
+		'Title'=>'Varchar(100)',
 		'SortID'=>'Int',
 		'ReadMore'=>'Varchar(100)',
 		'Content'=>'HTMLText'
@@ -43,7 +43,7 @@ class CO_TeaserSection_Box extends DataObject{
 		$customConfig = HtmlEditorConfig::get('cms')->removeButtons(
 		 'blockquote', 'hr','italic','bold','underline','removeformat','alignright','aligncenter','alignleft','alignjustify','justify','indent','outdent','bullist','numlist','paste','pastetext','files','media','link','anchor','code','toolbar','layout');
 
-		$titleField=new HTMLEditorField("Title","Bezeichnung",$customConfig);
+		$titleField=new TextField("Title","Bezeichnung",$customConfig);
 		$fields->addFieldToTab('Root.Main',$titleField);
 		$fields->addFieldToTab('Root.Main',new TextField('ReadMore','Beschriftung'));
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt (wird nicht in jedem Layout unterstützt.'));
@@ -56,7 +56,9 @@ class CO_TeaserSection_Box extends DataObject{
 		$fields->removeFieldFromTab('Root.Main','SortID');
 		return $fields;
 	}
-
+	public function getDate(){
+		return $this->Created;
+	}
 	public function DefaultImage(){
 		if($this->ImageID==0 && $this->DeepLink()){
 			return $this->DeepLink()->DefaultImage();
@@ -80,9 +82,9 @@ class CO_TeaserSection_Box extends DataObject{
 	private static $owns=[
 		'Image',
 	];
-	public function Content(){
+	/*public function Content(){
 		return false;
-	}
+	}*/
 	public function renderIt(){
 		return $this->renderWith($this->ClassName);	
 	}

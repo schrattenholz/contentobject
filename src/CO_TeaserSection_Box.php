@@ -82,9 +82,6 @@ class CO_TeaserSection_Box extends DataObject{
 	private static $owns=[
 		'Image',
 	];
-	/*public function Content(){
-		return false;
-	}*/
 	public function renderIt(){
 		return $this->renderWith($this->ClassName);	
 	}

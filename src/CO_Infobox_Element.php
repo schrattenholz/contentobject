@@ -19,7 +19,8 @@ class CO_Infobox_Element extends DataObject{
 		"Content"=>"HTMLText",
 		"Title"=>"Text",
 		"SortID"=>"Int",
-		"AfterStaticElements"=>"Boolean"
+		"AfterStaticElements"=>"Boolean",
+		"ShowInQuickEditList"=>"Boolean"
 	);
 	private static $has_one=[
 		"Infobox"=>CO_Infobox::class,
@@ -29,6 +30,7 @@ class CO_Infobox_Element extends DataObject{
 		$fields=parent::getCMSFields();
 		$fields->addFieldToTab('Root.Main',TextField::create('Title', "Titel"));
 		$fields->addFieldToTab('Root.Main',CheckboxField::create('AfterStaticElements', "Nach den automatischen Elementen anzeigen"));
+		$fields->addFieldToTab('Root.Main',CheckboxField::create('ShowInQuickEditList', "In der Schnellbearbeitungs-Liste anzeige"));
 		$fields->addFieldToTab('Root.Main',new DropdownField('ColorSetID','Farbschema wählen',ColorSet::get()->map("ID", "Title", "Bitte auswählen")));
 		$fields->addFieldToTab('Root.Main',HTMLEditorField::create('Content', "Inhalt"));
 		return $fields;

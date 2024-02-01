@@ -17,13 +17,15 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Core\Injector\Injector;
 use Psr\Log\LoggerInterface;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorConfig;
+use SilverStripe\Forms\CheckboxField;
 class CO_TeaserSection_Box extends DataObject{
 	private static $table_name="co_teasersection_box";
 	private static $db=array(
 		'Title'=>'Varchar(100)',
 		'SortID'=>'Int',
 		'ReadMore'=>'Varchar(100)',
-		'Content'=>'HTMLText'
+		'Content'=>'HTMLText',
+		"ShowInQuickEditList"=>"Boolean"
 		
 	);
     private static $translate = [
@@ -52,6 +54,7 @@ class CO_TeaserSection_Box extends DataObject{
 		}
 		$fields->addFieldToTab('Root.Main',new UploadField('Image','Bild'));
 		$fields->addFieldToTab('Root.Main',new UploadField('Video','Video (Bild wird das Startbild des Video)'));
+			$fields->addFieldToTab('Root.Main',CheckboxField::create('ShowInQuickEditList', "In der Schnellbearbeitungs-Liste anzeige"));
 		$fields->removeFieldFromTab('Root.Main','CO_TeaserSectionID');
 		$fields->removeFieldFromTab('Root.Main','SortID');
 		return $fields;

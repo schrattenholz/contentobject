@@ -101,44 +101,38 @@ class ContentObjectExtension extends Extension{
 			->addComponent(new GridFieldSortableHeader())
 			->addComponent(new GridFieldFilterHeader())
 			->addComponent(new GridFieldPaginator())
-			->addComponent(new GridFieldAddExistingAutocompleter())
 			->addComponent(new GridFieldOrderableRows('SortID'))
 		;
-		$multiClassConfig = new GridFieldAddNewMultiClass();
-        $multiClassConfig->setClasses(
-            array(
-				'Schrattenholz\ContentObject\CO_Infobox'
-				//'Schrattenholz\ContentObject\SeveralCols',
-				
-            )
-        );
-		$gridFieldConfig->addComponent($multiClassConfig);
+
 		$gridFieldConfig->removeComponentsByType('GridFieldAddNewButton');
-		$gridFieldConfig->removeComponentsByType('GridFieldAddNewButton');
+
 		
 		$contentObjects=$this->owner->ContentObjects()->filter(["ClassName"=>["Schrattenholz\ContentObject\CO_Infobox","Schrattenholz\ContentObject\CO_TeaserSection"]]);
+		if(count($contentObjects)>0){
+			$co_IDs=array();
+			foreach($contentObjects as $cO){
+				array_push($co_IDs,$cO->ID);
+				
+			}
+		
+			$infoBoxes=CO_Infobox_Element::get()->filter(["InfoboxID"=>$co_IDs])->where("ShowInQuickEditList",1);
+			$teaserSectionBoxes=CO_TeaserSection_Box::get()->filter(["CO_TeaserSectionID"=>$co_IDs])->where("ShowInQuickEditList",1);
+			$data=new ArrayList();
+			$data->merge($infoBoxes);
+			$data->merge($teaserSectionBoxes);
 
-		$co_IDs=array();
-		foreach($contentObjects as $cO){
-			array_push($co_IDs,$cO->ID);
-			
+			if($data->count()>0){
+					$fields->addFieldToTab('Root.Schnellbearbeitung', GridField::create(
+							'FastEdit',
+							'Schnellbearbeitung',
+							$data,
+							$gridFieldConfig
+						)
+					);
+				}
+			}    
 		}
-
-		$infoBoxes=CO_Infobox_Element::get()->filter(["InfoboxID"=>$co_IDs])->where("ShowInQuickEditList",1);
-		$teaserSectionBoxes=CO_TeaserSection_Box::get()->filter(["CO_TeaserSectionID"=>$co_IDs])->where("ShowInQuickEditList",1);
-		$data=new ArrayList();
-		$data->merge($infoBoxes);
-		$data->merge($teaserSectionBoxes);
-
-		$fields->addFieldToTab('Root.Schnellbearbeitung', GridField::create(
-			'FastEdit',
-			'Schnellbearbeitung',
-			$data,
-			$gridFieldConfig
-		)
-		);
-	}    
-	private static $owns = [
-        'ContentObjects'
-    ];
+		private static $owns = [
+			'ContentObjects'
+		];
 }

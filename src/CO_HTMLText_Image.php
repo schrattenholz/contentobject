@@ -7,7 +7,7 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\TabSet;
 use SilverStripe\AssetAdmin\Forms\UploadField;
-use Silverstripe\Assets\Image;
+use SilverStripe\Assets\Image;
 use SilverStripe\Forms\CheckboxField;
 class CO_HTMLText_Image extends CO_HTMLText{
 	private static $table_name="co_htmltextimage";

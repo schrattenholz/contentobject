@@ -3,8 +3,8 @@
 
 namespace Schrattenholz\ContentObject;
 
-use Silverstripe\ORM\DataObject;
-use Silverstripe\Assets\Image;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Assets\Image;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\Forms\DropdownField;

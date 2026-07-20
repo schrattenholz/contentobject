@@ -23,7 +23,7 @@ use SilverStripe\Security\Permission;
 use SilverStripe\Versioned\Versioned;
 use Schrattenholz\TemplateConfig\ColorSet;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\ArrayData;
 class ContentObject extends DataObject{
 	private static $table_name="contentobject";
 	private static $db=array(

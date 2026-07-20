@@ -27,8 +27,8 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\CheckboxField;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\List\ArrayList;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\ORM\ValidationException;
 use SilverStripe\CMS\Model\SiteTree;
@@ -112,10 +112,7 @@ class CO_Gallery extends ContentObject{
 		return $fields;
 	}
 	public function renderLayout(){
-		return $this->getOwner()->renderWith(ThemeResourceLoader::inst()->findTemplate(
-			$this->Layout()->Src,
-			SSViewer::config()->uninherited('themes')
-		));
+		return $this->getOwner()->renderWith($this->Layout()->Src);
 		//return $this->renderWith($this->Layout->Src);
 	}
 }

@@ -27,7 +27,7 @@ use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridFieldEditButton;
 use SilverStripe\Forms\GridField\GridFieldPaginator;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\ORM\ArrayList;	
+use SilverStripe\Model\List\ArrayList;	
 use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
@@ -176,10 +176,7 @@ class CO_TeaserSection extends ContentObject{
 		return $list;
 	}
 		public function renderLayout(){
-			return $this->getOwner()->renderWith(ThemeResourceLoader::inst()->findTemplate(
-				$this->Layout()->Src,
-				SSViewer::config()->uninherited('themes')
-			));
+			return $this->getOwner()->renderWith($this->Layout()->Src);
 			//return $this->renderWith($this->Layout->Src);
 		}
 }

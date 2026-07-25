@@ -41,10 +41,10 @@ class CO_Infobox extends ContentObject{
         $dataColumns->setDisplayFields([
             'Title' => 'Bezeichnung'
         ]);
-		$elements = new GridField("Elements", "Inhaltsblöcke", $this->Elements(), $gridFieldConfig);
+		$elements = new GridField("Elements", "InhaltsblÃ¶cke", $this->Elements(), $gridFieldConfig);
 
 		//$fields->removeFieldFromTab('Root.Main','ContentObject');
-		$fields->addFieldToTab('Root.Elemente', new CheckboxField("ShowOpeningHours",utf8_encode("Öffnungszeiten anzeigen")));
+		$fields->addFieldToTab('Root.Elemente', new CheckboxField("ShowOpeningHours","Ã–ffnungszeiten anzeigen"));
 		$fields->addFieldToTab('Root.Elemente', new CheckboxField("ShowAddress","Adresszeile anzeigen"));    
 		$fields->addFieldToTab('Root.Elemente', $elements);
 		

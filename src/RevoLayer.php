@@ -54,7 +54,7 @@ class RevoLayer extends DataObject{
 		return $this->BackgroundImage()->CMSThumbnail();
 	}
 	public function strposX($haystack, $needle, $number) {
-		preg_match_all("/($needle)/", utf8_decode($haystack), $matches, PREG_OFFSET_CAPTURE);
+		preg_match_all("/($needle)/", $haystack, $matches, PREG_OFFSET_CAPTURE);
 			return $matches[0][$number-1][1];
 
 	}

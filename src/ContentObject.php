@@ -99,8 +99,7 @@ class ContentObject extends DataObject{
 		return $this->customise($data)->renderWith($this->ClassName);	
 	}
 	public function FirstLetter(){
-		$ar=str_split($this->Title);
-		return utf8_encode($ar[0]);		
+		return mb_substr($this->Title, 0, 1);
 	}
 	public function onBeforeDelete(){
 		parent::onBeforeDelete();

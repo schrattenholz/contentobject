@@ -49,6 +49,15 @@ class ContentObjectExtension extends Extension{
 	private static $belongs_many_many=array(
 		'CO_TeaserSections'=>CO_TeaserSection::class
 	);
+	// None of these should be auto-scaffolded into their own CMS tab:
+	// 'ContentObjects' already gets its own explicit GridField below (in the
+	// "Weitere Inhalte" tab), scaffolding it too just produces an empty, orphaned
+	// duplicate tab. 'SeveralCols' and 'CO_TeaserSections' are managed elsewhere
+	// (or intentionally not directly editable here) and shouldn't show as a tab
+	// at all.
+	private static array $scaffold_cms_fields_settings = [
+		'ignoreRelations' => ['ContentObjects', 'SeveralCols', 'CO_TeaserSections'],
+	];
 	public function DeepLink(){
 		return $this->owner;
 	}

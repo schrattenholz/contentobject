@@ -144,7 +144,7 @@ class CO_TeaserSection extends ContentObject{
 		if($this->UseAutoData){
 			//alle Dokumente aus einer Kategorie holen
 			if($this->CategoryID){
-				foreach($this->Category()->AllChildren()->sort("Date","DESC")->limit($this->LimitOfEntries) as $c){
+				foreach($this->Category()->AllChildren()->sort("Date","DESC")->limit($this->LimitOfEntries ?: null) as $c){
 					$c->SortID=$sortID+1;
 					$list->push($c);
 				}

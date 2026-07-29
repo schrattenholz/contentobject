@@ -175,6 +175,11 @@ class CO_TeaserSection extends ContentObject{
 		}
 		return $list;
 	}
+	public function DisplayLimit(){
+		// LimitOfEntries=0 means "show all" -- DataList/ArrayList::limit(0) now
+		// returns zero rows (SS6), so templates must pass null instead of 0.
+		return $this->LimitOfEntries ?: null;
+	}
 		public function renderLayout(){
 			return $this->getOwner()->renderWith($this->Layout()->Src);
 			//return $this->renderWith($this->Layout->Src);

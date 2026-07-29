@@ -173,12 +173,13 @@ class CO_TeaserSection extends ContentObject{
 			$updatedList->push($item);
 			$c++;
 		}
+		// LimitOfEntries=0 means "show all" entries -- DataList/ArrayList::limit(0)
+		// now returns zero rows (SS6 behaviour change), so only apply a limit at
+		// all when a real positive number is configured.
+		if($this->LimitOfEntries){
+			return $list->limit($this->LimitOfEntries);
+		}
 		return $list;
-	}
-	public function DisplayLimit(){
-		// LimitOfEntries=0 means "show all" -- DataList/ArrayList::limit(0) now
-		// returns zero rows (SS6), so templates must pass null instead of 0.
-		return $this->LimitOfEntries ?: null;
 	}
 		public function renderLayout(){
 			return $this->getOwner()->renderWith($this->Layout()->Src);

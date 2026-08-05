@@ -15,7 +15,7 @@
 				<div class="row no-gutters justify-content-between">
 					<% loop $LimitedEntries %>
 						<!-- Card contentbased -->
-						<div class="card text-left overflow-hidden <% if not $DefaultImage %><% if not $Last %>mr-5<% end_if %> flex-fill <% end_if %><% if $ColorSetID %>colorSet{$ColorSetID} <% end_if %>" >
+						<div class="card text-left overflow-hidden <% if not $DefaultImage %><% if not $IsLast %>mr-5<% end_if %> flex-fill <% end_if %><% if $ColorSetID %>colorSet{$ColorSetID} <% end_if %>" >
 						<% if $DeepLink %><a href="$DeepLink.Link"><% end_if %>
 						  <div class="card-body <% if $DefaultImage %>p-0<% end_if %>">
 						   $DefaultImage.Fill(300,300)

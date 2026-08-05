@@ -14,7 +14,7 @@
 				<% if $LimitedEntries.Count>=2 %>
 					<% loop $LimitedEntries(4) %>
 					  <div class="col-12 col-sm-6  px-2 mb-sm-3">
-						<div class="card product-card card-static bg-transparent <% if $First %>rounded-big-top-left<% else_if $Last %>rounded-big-bottom-right<% end_if %>">
+						<div class="card product-card card-static bg-transparent <% if $IsFirst %>rounded-big-top-left<% else_if $IsLast %>rounded-big-bottom-right<% end_if %>">
 							<img class="w-100" src="$DefaultImage.Fill(278,278).URL" alt="$Title">
 						</div>
 					  </div>

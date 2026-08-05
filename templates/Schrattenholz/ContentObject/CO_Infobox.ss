@@ -8,7 +8,7 @@
 					$Form
 					<ul class="list-unstyled mb-0">
 					<% loop $Elements.Sort('SortID').Filter("AfterStaticElements",0) %>
-						<li class="media mb-0 pt-3<% if not $First %> pt-3 <% end_if %> <% if $Last && not $ShowAddress && not $ShowOpeningHours %>pb-2 border-bottom<% else_if not $Last %>border-bottom<% end_if %> colorSet{$ColorSetID}">
+						<li class="media mb-0 pt-3<% if not $IsFirst %> pt-3 <% end_if %> <% if $IsLast && not $ShowAddress && not $ShowOpeningHours %>pb-2 border-bottom<% else_if not $IsLast %>border-bottom<% end_if %> colorSet{$ColorSetID}">
 						
 						<div class="media-body mt-1 px-3">
 						  <h4>$Title</h4>
@@ -70,7 +70,7 @@
 						</li>
 					  <% end_if %>
 					  <% loop $Elements.Sort('SortID').Filter("AfterStaticElements",1) %>
-						<li class="media mb-0 pt-3<% if not $Last %>border-bottom<% end_if %> colorSet{$ColorSetID}">
+						<li class="media mb-0 pt-3<% if not $IsLast %>border-bottom<% end_if %> colorSet{$ColorSetID}">
 						
 						<div class="media-body mt-1 px-3">
 						  <h4>$Title </h4>

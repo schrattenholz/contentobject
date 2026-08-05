@@ -15,7 +15,7 @@
 				</div>
 			</a>
 			</div>
-		<% if  not $MultipleOf(2,2) || $Last %>
+		<% if  not $MultipleOf(2,2) || $IsLast %>
 		</div>
 		<% end_if %> 
 		<% end_loop %>

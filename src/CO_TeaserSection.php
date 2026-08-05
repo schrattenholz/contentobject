@@ -136,7 +136,18 @@ class CO_TeaserSection extends ContentObject{
 		// END Content Onjects -------------------------------------------------------//
 		return $fields;
 	}
-	public function LimitedEntries(){
+	/**
+	 * Eintraege der Teaser-Sektion, begrenzt auf die gewuenschte Anzahl.
+	 *
+	 * @param int|null $max Optionale Obergrenze aus dem Template, z.B.
+	 *                      <% loop $LimitedEntries(4) %> fuer ein Layout, das
+	 *                      hoechstens vier Eintraege darstellen kann. 0 oder
+	 *                      null bedeutet "keine Vorgabe aus dem Template".
+	 *
+	 * Sowohl beim CMS-Feld LimitOfEntries als auch bei $max heisst 0
+	 * "unbegrenzt"; sind beide gesetzt, gewinnt der kleinere Wert.
+	 */
+	public function LimitedEntries($max=null){
 		$list=new ArrayList();
 		$sortID=0;
 		
@@ -173,11 +184,11 @@ class CO_TeaserSection extends ContentObject{
 			$updatedList->push($item);
 			$c++;
 		}
-		// LimitOfEntries=0 means "show all" entries -- DataList/ArrayList::limit(0)
-		// now returns zero rows (SS6 behaviour change), so only apply a limit at
-		// all when a real positive number is configured.
-		if($this->LimitOfEntries){
-			return $list->limit($this->LimitOfEntries);
+		// Nur begrenzen, wenn wirklich eine positive Zahl vorliegt:
+		// DataList/ArrayList::limit(0) liefert seit SS6 null Zeilen statt aller.
+		$limits=array_filter([(int)$this->LimitOfEntries,(int)$max]);
+		if($limits){
+			return $list->limit(min($limits));
 		}
 		return $list;
 	}

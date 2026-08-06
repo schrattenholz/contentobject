@@ -45,7 +45,7 @@ class CO_TeaserSection_Box extends DataObject{
 		$customConfig = HtmlEditorConfig::get('cms')->removeButtons(
 		 'blockquote', 'hr','italic','bold','underline','removeformat','alignright','aligncenter','alignleft','alignjustify','justify','indent','outdent','bullist','numlist','paste','pastetext','files','media','link','anchor','code','toolbar','layout');
 
-		$titleField=new TextField("Title","Bezeichnung",$customConfig);
+		$titleField=new TextField("Title","Bezeichnung");
 		$fields->addFieldToTab('Root.Main',$titleField);
 		$fields->addFieldToTab('Root.Main',new TextField('ReadMore','Beschriftung'));
 		$fields->addFieldToTab('Root.Main',new HTMLEditorField('Content','Inhalt (wird nicht in jedem Layout unterstützt.'));

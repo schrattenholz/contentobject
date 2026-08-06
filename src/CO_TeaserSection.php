@@ -148,14 +148,31 @@ class CO_TeaserSection extends ContentObject{
 	 * "unbegrenzt"; sind beide gesetzt, gewinnt der kleinere Wert.
 	 */
 	public function LimitedEntries($max=null){
+		$list=$this->AllEntries();
+		// Nur begrenzen, wenn wirklich eine positive Zahl vorliegt:
+		// DataList/ArrayList::limit(0) liefert seit SS6 null Zeilen statt aller.
+		$limits=array_filter([(int)$this->LimitOfEntries,(int)$max]);
+		if($limits){
+			return $list->limit(min($limits));
+		}
+		return $list;
+	}
+	/**
+	 * Alle Eintraege der Sektion, ohne jede Begrenzung.
+	 *
+	 * Fuer Layouts, bei denen LimitOfEntries nicht "so viele laden", sondern
+	 * "so viele gleichzeitig zeigen" bedeutet -- etwa Karussells/Slider, die
+	 * die uebrigen Eintraege zum Durchscrollen brauchen.
+	 */
+	public function AllEntries(){
 		$list=new ArrayList();
 		$sortID=0;
-		
+
 
 		if($this->UseAutoData){
 			//alle Dokumente aus einer Kategorie holen
 			if($this->CategoryID){
-				foreach($this->Category()->AllChildren()->sort("Date","DESC")->limit($this->LimitOfEntries ?: null) as $c){
+				foreach($this->Category()->AllChildren()->sort("Date","DESC") as $c){
 					$c->SortID=$sortID+1;
 					$list->push($c);
 				}
@@ -183,12 +200,6 @@ class CO_TeaserSection extends ContentObject{
 			}
 			$updatedList->push($item);
 			$c++;
-		}
-		// Nur begrenzen, wenn wirklich eine positive Zahl vorliegt:
-		// DataList/ArrayList::limit(0) liefert seit SS6 null Zeilen statt aller.
-		$limits=array_filter([(int)$this->LimitOfEntries,(int)$max]);
-		if($limits){
-			return $list->limit(min($limits));
 		}
 		return $list;
 	}
